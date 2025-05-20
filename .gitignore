@@ -1,0 +1,23 @@
+# Go build
+/bin/
+/build/
+/bin/*
+
+# Output files
+*.out
+*.log
+*.test
+coverage/
+
+# OS/system files
+.DS_Store
+Thumbs.db
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env

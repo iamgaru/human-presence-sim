@@ -1,0 +1,19 @@
+
+# Binaries
+bin/
+build/
+*.exe
+*.out
+*.test
+
+# Coverage
+coverage*
+*.prof
+*.cov
+
+# Misc
+.DS_Store
+.env
+*.log
+.vscode/
+.idea/

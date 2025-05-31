@@ -1,14 +1,21 @@
 # syntax=docker/dockerfile:1
 
-# Build stage
+ARG MODULE=github.com/iamgaru/human-presence-sim
+
 FROM golang:1.21-alpine AS builder
-WORKDIR /app
+ENV GO111MODULE=on
+WORKDIR /src
+
+# Copy and initialize module
+COPY go.mod go.sum ./
+RUN go mod init $MODULE || true
+RUN go mod tidy
+
 COPY . .
+
 RUN go build -o simulator ./cmd/simulator
 
-# Final minimal runtime image
 FROM alpine:latest
-WORKDIR /app
-COPY --from=builder /app/simulator /usr/local/bin/simulator
+COPY --from=builder /src/simulator /usr/local/bin/simulator
 ENTRYPOINT ["simulator"]
 CMD ["--help"]

@@ -2,7 +2,7 @@
 
 ARG MODULE=github.com/iamgaru/human-presence-sim
 
-FROM golang:1.21-alpine AS builder
+FROM golang:1.24-alpine AS builder
 ENV GO111MODULE=on
 WORKDIR /src
 
